@@ -1,0 +1,136 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "SOLID challenge",
+        "description": "This is and API to manage Users",
+        "version": "1.0.0",
+        "contact": {
+            "email": "teste@teste.com"
+        }
+    },
+    "paths" : {
+        "/users": {
+            "post": {
+                "tags": ["User"],
+                "summary": "Create user",
+                "description": "Create a new user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "name": "rocketseat",
+                                "email": "jon.doe@email.com"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "admin": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "example": "f74f6bac-d091-4f1e-a776-1d0c6fcc7070"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "rocketseat"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "jon.doe@email.com"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2022-05-01T18:47:42.919Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2022-05-01T18:47:42.919Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "User already exists"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["User"],
+                "sumary": "List all users",
+                "description": "List all users",
+                "parameters": [
+                    {
+                      "name": "user_id",
+                      "in": "headers",
+                      "required": true,
+                      "type": "string"
+                    } 
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "admin": {
+                                                "type": "boolean",
+                                                "example": false
+                                            },
+                                            "id": {
+                                                "type": "string",
+                                                "example": "f74f6bac-d091-4f1e-a776-1d0c6fcc7070"
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "rocketseat"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "jon.doe@email.com"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "example": "2022-05-01T18:47:42.919Z"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "example": "2022-05-01T18:47:42.919Z"
+                                            }
+                                        }
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
